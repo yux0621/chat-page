@@ -21,37 +21,75 @@
             padding: 20px;
         }
 
-        .chat-container {
+        .phone-frame {
+            width: 320px;
+            height: 640px;
+            background: #C4B5FD;
+            border-radius: 40px;
+            padding: 12px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .phone-screen {
             width: 100%;
-            max-width: 500px;
-            height: 80vh;
+            height: 100%;
             background: #fff;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border-radius: 32px;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
-            overflow: hidden;
+        }
+
+        .status-bar {
+            height: 28px;
+            background: #f8f8f8;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            font-size: 12px;
+            color: #333;
+            padding-top: 5px;
+        }
+
+        .status-bar .time {
+            font-weight: 600;
+        }
+
+        .status-bar .icons {
+            display: flex;
+            gap: 5px;
+            align-items: center;
         }
 
         .chat-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            text-align: center;
-            font-size: 18px;
-            font-weight: 600;
+            background: #f8f8f8;
+            color: #333;
+            padding: 6px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 15px;
+            font-weight: 500;
         }
 
         .chat-messages {
             flex: 1;
-            padding: 20px;
+            padding: 15px;
             overflow-y: auto;
             background: #f5f5f5;
         }
 
+        .chat-messages::-webkit-scrollbar {
+            width: 0;
+        }
+
         .message {
             display: flex;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             align-items: flex-start;
         }
 
@@ -60,108 +98,123 @@
         }
 
         .avatar {
-            width: 40px;
-            height: 40px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             background: #ddd;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 18px;
+            font-size: 14px;
             flex-shrink: 0;
-            margin: 0 10px;
+            margin: 0 8px;
         }
 
         .user .avatar {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: url('../你我之间/女头像3.png') center/cover no-repeat;
         }
 
         .bot .avatar {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
+            background: url('../你我之间/男头像3.png') center/cover no-repeat;
         }
 
         .message-content {
-            max-width: 70%;
-            padding: 12px 16px;
-            border-radius: 18px;
-            font-size: 14px;
-            line-height: 1.5;
+            max-width: 75%;
+            padding: 10px 14px;
+            border-radius: 16px;
+            font-size: 13px;
+            line-height: 1.4;
             word-wrap: break-word;
         }
 
         .user .message-content {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: white;
+            color: #333;
             border-bottom-right-radius: 4px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
 
         .bot .message-content {
-            background: white;
+            background: #DDD6FE;
             color: #333;
             border-bottom-left-radius: 4px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .chat-input {
-            padding: 15px;
+        .quick-replies {
+            padding: 10px 12px;
             background: white;
             border-top: 1px solid #eee;
             display: flex;
-            gap: 10px;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
         }
 
-        .chat-input input {
-            flex: 1;
-            padding: 12px 16px;
-            border: 2px solid #e0e0e0;
-            border-radius: 25px;
-            font-size: 14px;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-
-        .chat-input input:focus {
-            border-color: #667eea;
-        }
-
-        .chat-input button {
-            padding: 12px 24px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+        .quick-replies button {
+            padding: 8px;
+            background: #DDD6FE;
             border: none;
-            border-radius: 25px;
-            font-size: 14px;
-            font-weight: 600;
+            border-radius: 12px;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: opacity 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .chat-input button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        .quick-replies button:hover {
+            opacity: 0.8;
         }
 
-        .chat-input button:active {
-            transform: translateY(0);
+        .quick-replies button:active {
+            opacity: 0.6;
         }
+
+        .quick-replies button img {
+            width: 32px;
+            height: 32px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .chat-input-area {
+            padding: 10px 12px;
+            background: white;
+            border-top: 1px solid #eee;
+        }
+
+        .chat-input-area input {
+            width: 100%;
+            padding: 10px 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 20px;
+            font-size: 13px;
+            outline: none;
+            cursor: pointer;
+            background: #f9f9f9;
+        }
+
+        .chat-input-area input:focus {
+            border-color: #DDD6FE;
+        }
+
+
 
         .typing-indicator {
             display: none;
-            padding: 10px 16px;
+            padding: 8px 12px;
             background: white;
-            border-radius: 18px;
+            border-radius: 16px;
             border-bottom-left-radius: 4px;
-            margin-left: 60px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-left: 50px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
 
         .typing-indicator span {
             display: inline-block;
-            width: 8px;
-            height: 8px;
+            width: 6px;
+            height: 6px;
             background: #999;
             border-radius: 50%;
             margin: 0 2px;
@@ -181,65 +234,106 @@
                 transform: translateY(0);
             }
             30% {
-                transform: translateY(-10px);
-            }
-        }
-
-        @media (max-width: 600px) {
-            .chat-container {
-                height: 100vh;
-                border-radius: 0;
+                transform: translateY(-8px);
             }
         }
     </style>
 </head>
 <body>
-    <div class="chat-container">
-        <div class="chat-header">💬 智能助手</div>
-        <div class="chat-messages" id="chatMessages">
-            <div class="message bot">
-                <div class="avatar">🤖</div>
-                <div class="message-content">你好！我是智能助手，有什么我可以帮助你的吗？</div>
+    <div class="phone-frame">
+        <div class="phone-screen">
+            <div class="status-bar">
+                <span class="time" id="clock">12:00</span>
+                <div class="icons">
+                    <span>🔋52</span>
+                </div>
             </div>
-        </div>
-        <div class="typing-indicator" id="typingIndicator">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div class="chat-input">
-            <input type="text" id="messageInput" placeholder="输入消息..." autocomplete="off">
-            <button onclick="sendMessage()">发送</button>
+            <div class="chat-header">Message</div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot">
+                    <div class="avatar"></div>
+                    <div class="message-content">你好！有什么我可以帮助你的吗？</div>
+                </div>
+            </div>
+            <div class="typing-indicator" id="typingIndicator">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="messageInput" placeholder="选择输入..." readonly onclick="toggleQuickReplies()">
+            </div>
+            <div class="quick-replies" id="quickReplies" style="display: none;">
+                <button onclick="sendQuickReply('开心', 'happy')" class="icon-btn"><img src="icon_happy.png" alt="开心"></button>
+                <button onclick="sendQuickReply('累', 'tired')" class="icon-btn"><img src="icon_tired.png" alt="累"></button>
+                <button onclick="sendQuickReply('生气', 'angry')" class="icon-btn"><img src="icon_angry.png" alt="生气"></button>
+                <button onclick="sendQuickReply('幸福', 'blessed')" class="icon-btn"><img src="icon_happy2.png" alt="幸福"></button>
+                <button onclick="sendQuickReply('爱你', 'love')" class="icon-btn"><img src="icon_love.png" alt="爱你"></button>
+                <button onclick="sendQuickReply('想你', 'miss')" class="icon-btn"><img src="icon_miss.png" alt="想你"></button>
+            </div>
         </div>
     </div>
 
     <script>
-        const responses = [
-            "这是一个很好的问题！让我想想...",
-            "我理解你的意思了。",
-            "有趣的观点！",
-            "这确实值得深入思考。",
-            "我明白你的感受。",
-            "你说得对！",
-            "这个想法很有创意。",
-            "我同意你的看法。",
-            "让我来帮你分析一下。",
-            "这确实是个复杂的问题。",
-            "你的观点很独特。",
-            "我需要更多信息来回答这个问题。",
-            "这是一个值得探讨的话题。",
-            "你的想法很有启发性。",
-            "我理解你的顾虑。",
-            "这个问题很有意思。",
-            "你的分析很到位。",
-            "我赞同你的观点。",
-            "这确实需要仔细考虑。",
-            "你的想法很有价值。"
-        ];
+        // 每个选项对应的回复集
+        const responseSets = {
+            happy: [
+                "看到你开心我也很高兴！",
+                "保持这份好心情！",
+                "快乐是会传染的~",
+                "今天有什么好事吗？",
+                "笑容是最美的表情！"
+            ],
+            tired: [
+                "辛苦了，好好休息一下吧。",
+                "累了就放松一下，别太累着自己。",
+                "需要我陪你聊聊天吗？",
+                "累了就早点休息，身体最重要。",
+                "抱抱你，辛苦啦~"
+            ],
+            angry: [
+                "别生气啦，气坏身子不值得。",
+                "深呼吸，冷静下来。",
+                "谁惹你生气了？跟我说说。",
+                "消消气，我陪你。",
+                "生气对身体不好，想开点~"
+            ],
+            blessed: [
+                "幸福的感觉真好！",
+                "珍惜这份幸福~",
+                "幸福的人最美！",
+                "愿你的幸福一直延续。",
+                "感受到你的幸福了！"
+            ],
+            love: [
+                "我也爱你！",
+                "收到你的爱啦~",
+                "爱是最美好的情感。",
+                "我也爱你，永远支持你。",
+                "爱要大声说出来！"
+            ],
+            miss: [
+                "我也想你！",
+                "距离再远也挡不住思念。",
+                "想你的每一天。",
+                "期待早日见到你。",
+                "思念是一种甜蜜的忧伤~"
+            ]
+        };
 
-        function getRandomResponse() {
+        function getRandomResponse(type) {
+            const responses = responseSets[type] || responseSets.happy;
             const randomIndex = Math.floor(Math.random() * responses.length);
             return responses[randomIndex];
+        }
+
+        function toggleQuickReplies() {
+            const quickReplies = document.getElementById('quickReplies');
+            if (quickReplies.style.display === 'none') {
+                quickReplies.style.display = 'flex';
+            } else {
+                quickReplies.style.display = 'none';
+            }
         }
 
         function addMessage(content, isUser) {
@@ -249,7 +343,6 @@
             
             const avatar = document.createElement('div');
             avatar.className = 'avatar';
-            avatar.textContent = isUser ? '👤' : '🤖';
             
             const messageContent = document.createElement('div');
             messageContent.className = 'message-content';
@@ -271,29 +364,28 @@
             document.getElementById('typingIndicator').style.display = 'none';
         }
 
-        function sendMessage() {
-            const input = document.getElementById('messageInput');
-            const message = input.value.trim();
-            
-            if (message === '') return;
-            
+        function sendQuickReply(message, type) {
             addMessage(message, true);
-            input.value = '';
+            document.getElementById('quickReplies').style.display = 'none';
             
             showTypingIndicator();
             
             setTimeout(() => {
                 hideTypingIndicator();
-                const response = getRandomResponse();
+                const response = getRandomResponse(type);
                 addMessage(response, false);
             }, 1000 + Math.random() * 1000);
         }
 
-        document.getElementById('messageInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                sendMessage();
-            }
-        });
+        // 更新时间
+        function updateTime() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            document.getElementById('clock').textContent = hours + ':' + minutes;
+        }
+        updateTime();
+        setInterval(updateTime, 1000);
     </script>
 </body>
 </html>
